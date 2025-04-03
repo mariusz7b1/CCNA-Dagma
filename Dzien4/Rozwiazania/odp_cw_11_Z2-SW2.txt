@@ -1,0 +1,29 @@
+! SW1
+enable
+configure terminal
+Hostname SW1
+interface range fa0/1-2
+channel-group 1 mode active
+interface port-channel 1
+switchport mode trunk
+!
+interface range fa0/3-4
+channel-group 2 mode active
+interface port-channel 2
+switchport mode trunk
+vlan 40
+vlan 60
+
+interface fa0/11
+swi mode access
+swi access vlan 40
+span portfast
+span bpdu enable
+interface fa0/12
+swi mode access
+swi access vlan 60
+span portfast
+span bpdu enable
+exit
+spanning-tree mode rapid-pvst 
+

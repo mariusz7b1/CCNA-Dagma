@@ -1,0 +1,23 @@
+! SW3
+enable
+configure terminal
+Hostname SW3
+interface range fa0/1-2
+channel-group 1 mode active
+interface port-channel 1
+switchport mode trunk
+!
+interface range fa0/3-4
+channel-group 2 mode active
+interface port-channel 2
+switchport mode trunk
+!
+inter g0/1
+swi mode trunk
+
+vlan 40
+vlan 60
+!
+exit
+spanning-tree mode rapid-pvst 
+
